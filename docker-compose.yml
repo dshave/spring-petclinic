@@ -7,8 +7,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - spring_profiles_active=mysql
-      - MYSQL_URL=jdbc:mysql://mysql/petclinic
+      - spring_profiles_active=mysql            # Use mysql profile in spring-boot
+      - MYSQL_URL=jdbc:mysql://mysql/petclinic  # We only need to override the connection url.
+                                                # All other settings are using working defaults.
   mysql:
     image: mysql:5.7
     ports:
