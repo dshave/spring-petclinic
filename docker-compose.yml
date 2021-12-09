@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   app:
+    build: .
     image: petclinic:latest
     entrypoint: ['/bin/bash', '-c', 'wait-for-it mysql:3306 -s --timeout=60 -- java -jar /opt/app.jar']
     ports:
@@ -19,7 +20,6 @@ services:
       - MYSQL_PASSWORD=petclinic
       - MYSQL_DATABASE=petclinic
     volumes:
-      - "mysql_conf:/etc/mysql/conf.d"
       - "mysql_data:/var/lib/mysql"
 
 volumes:
